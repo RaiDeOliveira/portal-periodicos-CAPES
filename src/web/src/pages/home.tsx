@@ -1,4 +1,3 @@
-import { NavBar } from "@/components/navbar";
 import { Input } from "@/components/ui/input";
 import {
   Card,
@@ -157,8 +156,6 @@ export function Home() {
 
   return (
     <div className="font-rawline">
-      <NavBar />
-
       <div className="pt-[110px] bg-[#ECECEC]">
         <div className="py-4 w-1/2 mx-auto font-bold">
           <Input
