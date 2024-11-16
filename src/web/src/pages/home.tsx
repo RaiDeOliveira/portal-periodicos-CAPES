@@ -87,22 +87,22 @@ function ResearcherCard({ avatarSrc, name, field }: ResearcherProps) {
 export function Home() {
   const articles: ArticleProps[] = [
     {
-      avatarSrc: "https://via.placeholder.com/40",
+      avatarSrc: "/people/1.png",
       title: "Computação quântica: uma abordagem de ensino baseada em projetos",
       author: "Carlos Almeida Júnior",
       description:
         "Este artigo explora como a computação quântica pode ser ensinada por meio de projetos práticos, destacando abordagens inovadoras e benefícios para a formação de novos profissionais nesta área emergente da ciência. Ao focar em aplicações reais e no desenvolvimento de habilidades críticas, a abordagem baseada em projetos oferece uma experiência de aprendizado imersiva, ideal para preparar alunos para os desafios do futuro. Exemplos de projetos incluem a simulação de algoritmos quânticos e o desenvolvimento de soluções para problemas complexos usando princípios quânticos.",
     },
     {
-      avatarSrc: "https://via.placeholder.com/40",
+      avatarSrc: "/people/2.png",
       title:
-        "Desigualdades de gênero no Sistema Único de Saúde e impactos no bem estar social da mulher",
+        "Desigualdades de gênero no Sistema Único de Saúde e impactos no bem-estar social da mulher",
       author: "Aline Gonçales de Souza",
       description:
         "O artigo investiga como as desigualdades de gênero afetam o acesso e a qualidade do atendimento no Sistema Único de Saúde (SUS), destacando o impacto disso no bem-estar social das mulheres no Brasil. Ele aborda questões como o preconceito de gênero no atendimento médico, a falta de políticas públicas específicas para as necessidades femininas e os desafios enfrentados por mulheres em situação de vulnerabilidade social. Além disso, propõe medidas para promover a equidade e melhorar a qualidade dos serviços oferecidos.",
     },
     {
-      avatarSrc: "https://via.placeholder.com/40",
+      avatarSrc: "/people/3.png",
       title: "A influência da inteligência artificial na medicina personalizada",
       author: "João Paulo Rocha",
       description:
@@ -112,25 +112,25 @@ export function Home() {
 
   const news: NewsProps[] = [
     {
-      imageSrc: "https://via.placeholder.com/300x150",
+      imageSrc: "/news/n1.png",
       headline: "Descoberta de novos materiais supercondutores",
       summary:
         "Cientistas avançam na busca por materiais supercondutores em temperatura ambiente.",
     },
     {
-      imageSrc: "https://via.placeholder.com/300x150",
+      imageSrc: "/news/n2.png",
       headline: "Impactos das mudanças climáticas na biodiversidade",
       summary:
         "Novo estudo mostra como espécies estão migrando para regiões mais frias devido às mudanças no clima.",
     },
     {
-      imageSrc: "https://via.placeholder.com/300x150",
+      imageSrc: "/news/n3.png",
       headline: "Exploração de oceanos profundos revela novas espécies",
       summary:
         "Pesquisadores identificam criaturas nunca antes vistas em expedição marítima aos oceanos profundos.",
     },
     {
-      imageSrc: "https://via.placeholder.com/300x150",
+      imageSrc: "/news/n4.png",
       headline: "Progresso em terapias genéticas para doenças raras",
       summary:
         "Avanços na edição de genes CRISPR trazem novas esperanças para tratamentos de doenças raras.",
@@ -139,19 +139,19 @@ export function Home() {
 
   const researchers: ResearcherProps[] = [
     {
-      avatarSrc: "https://via.placeholder.com/100",
+      avatarSrc: "/people/p1.png",
       name: "Maria Silva",
       field: "Inteligência Artificial",
     },
     {
-      avatarSrc: "https://via.placeholder.com/100",
+      avatarSrc: "/people/p2.png",
       name: "José Costa",
-      field: "Bioengenharia",
+      field: "Engenharia biomédica",
     },
     {
-      avatarSrc: "https://via.placeholder.com/100",
-      name: "Carlos Almeida",
-      field: "Computação Quântica",
+      avatarSrc: "/people/p3.png",
+      name: "Milena Pinheiros",
+      field: "Biotecnologia",
     },
   ];
 
