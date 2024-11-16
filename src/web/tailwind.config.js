@@ -13,7 +13,9 @@ export default {
         dark1: "#000000",
         dark2: "#2B2B2B",
         blue1: "#48BFE3",
+        blue2: "#1c1c5e",
         purple1: "#7400B8",
+        green1: "#009036",
         light2: "#F2F2F2",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -58,5 +60,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("tailwind-scrollbar")],
 };

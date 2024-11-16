@@ -1,82 +1,86 @@
 import React, { useState } from "react";
+import { sendMessage } from "@/service/chat";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
-type Message = {
-  text: string;
-  sender: "user" | "bot";
-};
+interface PublicationChatProps {
+  publication: string;
+}
 
-export function PublicationChat() {
-  const [messages, setMessages] = useState<Message[]>([]);
+export function PublicationChat({ publication }: PublicationChatProps) {
+  const [messages, setMessages] = useState<
+    { text: string; sender: "user" | "bot" }[]
+  >([]);
   const [input, setInput] = useState("");
 
-  async function sendMessageToBackend(userMessage: string): Promise<string> {
-    try {
-      const response = await fetch("https://seu-backend.com/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ message: userMessage }),
-      });
-
-      const data = await response.json();
-      return data.reply;
-    } catch (error) {
-      console.error("Erro ao enviar mensagem:", error);
-      return "Desculpe, houve um erro. Tente novamente mais tarde.";
-    }
-  }
-
-  // Função para lidar com o envio da mensagem
   async function handleSendMessage(event: React.FormEvent) {
     event.preventDefault();
     if (!input.trim()) return;
 
-    // Adiciona a mensagem do usuário ao histórico
-    const userMessage: Message = { text: input, sender: "user" };
-    setMessages((prevMessages) => [...prevMessages, userMessage]);
-
-    // Limpa o input
+    const userMessage: { text: string; sender: "user" } = {
+      text: input,
+      sender: "user",
+    };
+    setMessages((prev) => [...prev, userMessage]);
     setInput("");
 
-    // Envia a mensagem ao backend e obtém a resposta do chatbot
-    const botReply = await sendMessageToBackend(input);
-
-    // Adiciona a resposta do bot ao histórico de mensagens
-    const botMessage: Message = { text: botReply, sender: "bot" };
-    setMessages((prevMessages) => [...prevMessages, botMessage]);
+    try {
+      const botReply = await sendMessage(input, publication);
+      const botMessage: { text: string; sender: "bot" } = {
+        text: botReply,
+        sender: "bot",
+      };
+      setMessages((prev) => [...prev, botMessage]);
+    } catch {
+      const errorMessage: { text: string; sender: "bot" } = {
+        text: "Erro ao se comunicar com o chat.",
+        sender: "bot",
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+    }
   }
 
   return (
-    <div className="flex flex-col h-screen p-4 bg-gray-100">
-      <div className="flex-1 overflow-y-auto mb-4">
-        <div className="space-y-2">
-          {messages.map((message, index) => (
+    <div className="flex flex-col h-[400px] p-3 border border-blue2 rounded-md shadow-lg bg-light2">
+      {/* Mensagens */}
+      <div className="flex-1 overflow-y-auto mb-4 space-y-3 pr-2 scrollbar-none">
+        {messages.map((message, index) => (
+          <div
+            key={index}
+            className={`flex ${
+              message.sender === "user" ? "justify-end" : "justify-start"
+            }`}
+          >
             <div
-              key={index}
-              className={`p-2 rounded-lg max-w-xs ${
+              className={`p-3 rounded-lg max-w-[75%] text-sm shadow-md ${
                 message.sender === "user"
-                  ? "bg-blue-500 text-white self-end"
-                  : "bg-gray-300 text-black self-start"
+                  ? "bg-blue2 text-white"
+                  : "bg-gray-200 text-black"
               }`}
             >
-              {message.text}
+              <ReactMarkdown
+                className="prose prose-sm"
+                remarkPlugins={[remarkGfm]}
+              >
+                {message.text}
+              </ReactMarkdown>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
 
-      <form onSubmit={handleSendMessage} className="flex">
+      {/* Campo de entrada */}
+      <form onSubmit={handleSendMessage} className="flex items-center">
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Digite sua mensagem..."
-          className="flex-1 p-2 rounded-lg border border-gray-300"
+          className="flex-1 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue2"
         />
         <button
           type="submit"
-          className="ml-2 p-2 rounded-lg bg-blue-500 text-white"
+          className="ml-3 px-4 py-2 bg-blue2 text-white rounded-lg shadow hover:bg-blue2 transition-all"
         >
           Enviar
         </button>
