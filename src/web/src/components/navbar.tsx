@@ -11,7 +11,7 @@ import {
   export function NavBar() {
     return (
 
-        <div className="fixed top-0 left-0 w-full z-10 bg-white shadow-md">
+        <div className="fixed top-0 left-0 w-full z-10 bg-white shadow-md h-[96px]">
 
             <div className="font-rawline flex justify-between items-center px-1 py-4">
                 {/* Container para as imagens */}
