@@ -1,3 +1,5 @@
+@import url('https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
