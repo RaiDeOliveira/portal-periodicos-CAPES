@@ -166,7 +166,13 @@ export function NavBar() {
           <BaseButton />
         </div>
       </div>
-      <div className="w-full h-8 bg-[#001D6C]"></div>
+
+      <div className="w-full h-8 bg-[#001D6C] flex items-center justify-left pl-4">
+        <a href="/" className="hover:opacity-80 transition-opacity">
+          <img src="/home_icon.svg" alt="Home" className="h-5 w-5" />
+        </a>
+      </div>
+
     </div>
   );
 }
