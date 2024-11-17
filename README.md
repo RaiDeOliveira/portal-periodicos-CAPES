@@ -29,17 +29,17 @@ A solução proposta se assemelha a uma rede social acadêmica, com funcionalida
 
 1. Abra uma janela de terminal e clone o repositório no diretório de sua preferência:
 
-'''bash
+```bash
 git clone git@github.com:RaiDeOliveira/portal-periodicos-CAPES.git
-'''
+```
 
 2. Execute o seguinte comando na mesma janaela para iniciar a aplicação:
 
-'''bash
+```bash
 cd portal-periodicos-CAPES/src/web
 npm i
 npm run dev
-'''
+```
 
 3. Clique na URL exibida no terminal para acessar a aplicação em seu navegador de preferência.
 
