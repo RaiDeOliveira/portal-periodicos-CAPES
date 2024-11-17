@@ -1,4 +1,4 @@
-import { NavBar } from "@/components/navbar";
+import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import {
   Card,
@@ -10,11 +10,174 @@ import {
 } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
 
+// Tipos para os componentes
+interface ArticleProps {
+  avatarSrc: string;
+  title: string;
+  author: string;
+  description: string;
+}
+
+interface NewsProps {
+  imageSrc: string;
+  headline: string;
+  summary: string;
+}
+
+interface ResearcherProps {
+  avatarSrc: string;
+  name: string;
+  field: string;
+}
+
+// Componente para Artigo
+function ArticleCard({ avatarSrc, title, author, description }: ArticleProps) {
+  return (
+    <Card className="w-full max-w-full">
+      <CardHeader>
+        <div className="flex items-center space-x-4">
+          <Avatar className="w-12 h-12">
+            <img src={avatarSrc} alt="Avatar" className="rounded-full" />
+          </Avatar>
+          <CardTitle>{title}</CardTitle>
+          <img src="/save.svg" alt="Salvar" className="pl-4 h-6" />
+        </div>
+        <CardDescription>Por {author}</CardDescription>
+      </CardHeader>
+      <CardContent>{description}</CardContent>
+    </Card>
+  );
+}
+
+// Componente para Notícia
+function NewsCard({ imageSrc, headline, summary }: NewsProps) {
+  return (
+    <li className="flex flex-col items-center space-y-2">
+      <div className="w-72">
+        <img
+          src={imageSrc}
+          alt={headline}
+          className="w-full h-36 object-cover rounded-lg"
+        />
+        <div className="text-left">
+          <h2 className="font-semibold w-full">{headline}</h2>
+          <p className="text-sm text-gray-600 w-full">{summary}</p>
+        </div>
+      </div>
+    </li>
+  );
+}
+
+// Componente para Pesquisador com funcionalidade "Seguindo"
+function ResearcherCard({ avatarSrc, name, field }: ResearcherProps) {
+  const [isFollowing, setIsFollowing] = useState(false);
+
+  const handleFollow = () => {
+    setIsFollowing(!isFollowing);
+  };
+
+  return (
+    <Card className="shadow-md flex flex-col items-center p-6 px-24">
+      <Avatar className="w-24 h-24 mb-4">
+        <img src={avatarSrc} alt="Avatar" className="rounded-full" />
+      </Avatar>
+      <CardTitle className="text-lg font-semibold">{name}</CardTitle>
+      <p className="text-sm text-gray-600 mb-4">{field}</p>
+      <button
+        onClick={handleFollow}
+        className={`group w-full flex items-center justify-center gap-2 font-bold border border-[#001D6C] py-2 rounded-md transition-colors ${
+          isFollowing
+            ? "bg-[#001D6C] text-white"
+            : "bg-white text-[#001D6C] hover:bg-[#001D6C] hover:text-white"
+        }`}
+      >
+        {!isFollowing && (
+          <img
+            src="/add_icon.svg"
+            alt="Adicionar"
+            className="w-4 h-4 group-hover:brightness-0 group-hover:invert"
+          />
+        )}
+        {isFollowing ? "Seguindo" : "Seguir"}
+      </button>
+    </Card>
+  );
+}
+
+// Página principal
 export function Home() {
+  const articles: ArticleProps[] = [
+    {
+      avatarSrc: "/people/1.png",
+      title: "Computação quântica: uma abordagem de ensino baseada em projetos",
+      author: "Carlos Almeida Júnior",
+      description:
+        "Este artigo explora como a computação quântica pode ser ensinada por meio de projetos práticos...",
+    },
+    {
+      avatarSrc: "/people/2.png",
+      title:
+        "Desigualdades de gênero no Sistema Único de Saúde e impactos no bem-estar social da mulher",
+      author: "Aline Gonçales de Souza",
+      description:
+        "O artigo investiga como as desigualdades de gênero afetam o acesso e a qualidade do atendimento no SUS...",
+    },
+    {
+      avatarSrc: "/people/3.png",
+      title: "A influência da inteligência artificial na medicina personalizada",
+      author: "João Paulo Rocha",
+      description:
+        "Este artigo analisa o impacto da inteligência artificial no desenvolvimento da medicina personalizada...",
+    },
+  ];
+
+  const news: NewsProps[] = [
+    {
+      imageSrc: "/news/n1.png",
+      headline: "Descoberta de novos materiais supercondutores",
+      summary:
+        "Cientistas avançam na busca por materiais supercondutores em temperatura ambiente.",
+    },
+    {
+      imageSrc: "/news/n2.png",
+      headline: "Impactos das mudanças climáticas na biodiversidade",
+      summary:
+        "Novo estudo mostra como espécies estão migrando para regiões mais frias devido às mudanças no clima.",
+    },
+    {
+      imageSrc: "/news/n3.png",
+      headline: "Exploração de oceanos profundos revela novas espécies",
+      summary:
+        "Pesquisadores identificam criaturas nunca antes vistas em expedição marítima aos oceanos profundos.",
+    },
+    {
+      imageSrc: "/news/n4.png",
+      headline: "Progresso em terapias genéticas para doenças raras",
+      summary:
+        "Avanços na edição de genes CRISPR trazem novas esperanças para tratamentos de doenças raras.",
+    },
+  ];
+
+  const researchers: ResearcherProps[] = [
+    {
+      avatarSrc: "/people/p1.png",
+      name: "Maria Silva",
+      field: "Inteligência Artificial",
+    },
+    {
+      avatarSrc: "/people/p2.png",
+      name: "José Costa",
+      field: "Engenharia biomédica",
+    },
+    {
+      avatarSrc: "/people/p3.png",
+      name: "Milena Pinheiros",
+      field: "Biotecnologia",
+    },
+  ];
+
   return (
     <div className="font-rawline">
-      <NavBar />
-
       <div className="pt-[110px] bg-[#ECECEC]">
         <div className="py-4 w-1/2 mx-auto font-bold">
           <Input
@@ -24,201 +187,37 @@ export function Home() {
         </div>
 
         <div className="py-4 px-16 w-full flex space-x-12">
-          {/* Coluna da esquerda: Artigos */}
           <div className="flex-1 h-[720px] overflow-hidden">
             <h1 className="font-bold text-2xl pb-4">Artigos para você</h1>
             <div className="flex flex-col space-y-6 h-full overflow-y-scroll scrollbar-hide">
-              {/* Artigos */}
-              <Card className="w-full max-w-full">
-                <CardHeader>
-                  <div className="flex items-center space-x-4">
-                    <Avatar>
-                      <img
-                        src="https://via.placeholder.com/40"
-                        alt="Avatar"
-                        className="rounded-full"
-                      />
-                    </Avatar>
-                    <CardTitle>
-                      Computação quântica: uma abordagem de ensino baseada em projetos
-                    </CardTitle>
-                    <img src="/save_icon.svg" alt="Imagem 2" className="pl-4 h-6" />
-                  </div>
-                  <CardDescription>Por Carlos Almeida Júnior</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  Este artigo explora como a computação quântica pode ser ensinada por meio de projetos práticos, destacando abordagens inovadoras e benefícios para a formação de novos profissionais nesta área emergente da ciência.
-                </CardContent>
-              </Card>
-
-              <Card className="w-full max-w-full">
-                <CardHeader>
-                  <div className="flex items-center space-x-4">
-                    <Avatar>
-                      <img
-                        src="https://via.placeholder.com/40"
-                        alt="Avatar"
-                        className="rounded-full"
-                      />
-                    </Avatar>
-                    <CardTitle>
-                      Desigualdades de gênero no Sistema Único de Saúde e impactos no bem estar social da mulher
-                    </CardTitle>
-                    <img src="/save_icon.svg" alt="Imagem 2" className="pl-4 h-6" />
-                  </div>
-                  <CardDescription>Por Aline Gonçales de Souza</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  O artigo investiga como as desigualdades de gênero afetam o acesso e a qualidade do atendimento no Sistema Único de Saúde (SUS), destacando o impacto disso no bem-estar social das mulheres no Brasil.
-                </CardContent>
-              </Card>
-
-              {/* Novo Artigo */}
-              <Card className="w-full max-w-full">
-                <CardHeader>
-                  <div className="flex items-center space-x-4">
-                    <Avatar>
-                      <img
-                        src="https://via.placeholder.com/40"
-                        alt="Avatar"
-                        className="rounded-full"
-                      />
-                    </Avatar>
-                    <CardTitle>
-                      A influência da inteligência artificial na medicina personalizada
-                    </CardTitle>
-                    <img src="/save_icon.svg" alt="Imagem 2" className="pl-4 h-6" />
-                  </div>
-                  <CardDescription>Por João Paulo Rocha</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  Este artigo analisa o impacto da inteligência artificial (IA) no desenvolvimento da medicina personalizada, discutindo como as tecnologias de IA estão transformando os tratamentos médicos e a personalização do cuidado para pacientes.
-                </CardContent>
-              </Card>
+              {articles.map((article, index) => (
+                <ArticleCard key={index} {...article} />
+              ))}
             </div>
           </div>
 
-          {/* Coluna da direita: Mega Card para Notícias Científicas */}
           <div className="pt-12 w-3/10">
-            <Card className="w-full h-[720px] overflow-hidden shadow-md">
+            <Card className="w-full h-[680px] overflow-hidden shadow-md">
               <CardHeader>
-                <CardTitle className="text-center">
-                  Notícias
-                </CardTitle>
+                <CardTitle className="text-center">Notícias</CardTitle>
               </CardHeader>
               <CardContent className="overflow-y-scroll h-[calc(100%-50px)] scrollbar-hide">
                 <ul className="space-y-8">
-                  <li className="flex flex-col items-center space-y-2">
-                    <div className="w-72">
-                      <img
-                        src="https://via.placeholder.com/300x150"
-                        alt="Imagem 1"
-                        className="w-full h-36 object-cover rounded-lg"
-                      />
-                      <div className="text-left">
-                        <h2 className="font-semibold w-full">Descoberta de novos materiais supercondutores</h2>
-                        <p className="text-sm text-gray-600 w-full">
-                          Cientistas avançam na busca por materiais supercondutores em temperatura ambiente.
-                        </p>
-                      </div>
-                    </div>
-                  </li>
-                  <li className="flex flex-col items-center space-y-2">
-                    <div className="w-72">
-                      <img
-                        src="https://via.placeholder.com/300x150"
-                        alt="Imagem 2"
-                        className="w-full h-36 object-cover rounded-lg"
-                      />
-                      <div className="text-left">
-                        <h2 className="font-semibold w-full">Impactos das mudanças climáticas na biodiversidade</h2>
-                        <p className="text-sm text-gray-600 w-full">
-                          Novo estudo mostra como espécies estão migrando para regiões mais frias devido às mudanças no clima.
-                        </p>
-                      </div>
-                    </div>
-                  </li>
-                  <li className="flex flex-col items-center space-y-2">
-                    <div className="w-72">
-                      <img
-                        src="https://via.placeholder.com/300x150"
-                        alt="Imagem 3"
-                        className="w-full h-36 object-cover rounded-lg"
-                      />
-                      <div className="text-left">
-                        <h2 className="font-semibold w-full">Exploração de oceanos profundos revela novas espécies</h2>
-                        <p className="text-sm text-gray-600 w-full">
-                          Pesquisadores identificam criaturas nunca antes vistas em expedição marítima aos oceanos profundos.
-                        </p>
-                      </div>
-                    </div>
-                  </li>
-                  <li className="flex flex-col items-center space-y-2">
-                    <div className="w-72">
-                      <img
-                        src="https://via.placeholder.com/300x150"
-                        alt="Imagem 4"
-                        className="w-full h-36 object-cover rounded-lg"
-                      />
-                      <div className="text-left">
-                        <h2 className="font-semibold w-full">Progresso em terapias genéticas para doenças raras</h2>
-                        <p className="text-sm text-gray-600 w-full">
-                          Avanços na edição de genes CRISPR trazem novas esperanças para tratamentos de doenças raras.
-                        </p>
-                      </div>
-                    </div>
-                  </li>
+                  {news.map((newsItem, index) => (
+                    <NewsCard key={index} {...newsItem} />
+                  ))}
                 </ul>
               </CardContent>
             </Card>
           </div>
         </div>
 
-        {/* Seção de Pesquisadores Recomendados */}
-        <div className="pt-12 px-16">
+        <div className="py-12 px-16">
           <h1 className="font-bold text-2xl pb-4">Pesquisadores Recomendados</h1>
           <div className="grid grid-cols-3 gap-8 text-center">
-            {/* Pesquisador 1 */}
-            <Card className="shadow-md flex flex-col items-center p-6 px-24">
-              <Avatar className="w-24 h-24 mb-4">
-                <img
-                  src="https://via.placeholder.com/100"
-                  alt="Avatar"
-                  className="rounded-full"
-                />
-              </Avatar>
-              <CardTitle className="text-lg font-semibold">Maria Silva</CardTitle>
-              <p className="text-sm text-gray-600 mb-4">Inteligência Artificial</p>
-              <button className="w-full bg-blue-500 text-white py-2 rounded-md">Seguir</button>
-            </Card>
-
-            {/* Pesquisador 2 */}
-            <Card className="shadow-md flex flex-col items-center p-6 px-24">
-              <Avatar className="w-24 h-24 mb-4">
-                <img
-                  src="https://via.placeholder.com/100"
-                  alt="Avatar"
-                  className="rounded-full"
-                />
-              </Avatar>
-              <CardTitle className="text-lg font-semibold">José Costa</CardTitle>
-              <p className="text-sm text-gray-600 mb-4">Bioengenharia</p>
-              <button className="w-full bg-blue-500 text-white py-2 rounded-md">Seguir</button>
-            </Card>
-
-            {/* Pesquisador 3 */}
-            <Card className="shadow-md flex flex-col items-center p-6 px-24">
-              <Avatar className="w-24 h-24 mb-4">
-                <img
-                  src="https://via.placeholder.com/100"
-                  alt="Avatar"
-                  className="rounded-full"
-                />
-              </Avatar>
-              <CardTitle className="text-lg font-semibold">Carlos Almeida</CardTitle>
-              <p className="text-sm text-gray-600 mb-4">Computação Quântica</p>
-              <button className="w-full bg-blue-500 text-white py-2 rounded-md">Seguir</button>
-            </Card>
+            {researchers.map((researcher, index) => (
+              <ResearcherCard key={index} {...researcher} />
+            ))}
           </div>
         </div>
       </div>
