@@ -19,6 +19,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cytoscape": "^3.30.3",
+    "cytoscape-fcose": "^2.2.0",
     "lucide-react": "^0.459.0",
     "react": "^18.3.1",
     "react-cytoscapejs": "^2.0.0",
@@ -33,6 +34,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",
+    "@types/cytoscape": "^3.21.8",
+    "@types/cytoscape-fcose": "^2.2.4",
     "@types/node": "^22.9.0",
     "@types/react": "^18.3.3",
     "@types/react-cytoscapejs": "^1.2.5",
