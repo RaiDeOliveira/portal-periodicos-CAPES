@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import {
   Card,
@@ -35,11 +36,11 @@ function ArticleCard({ avatarSrc, title, author, description }: ArticleProps) {
     <Card className="w-full max-w-full">
       <CardHeader>
         <div className="flex items-center space-x-4">
-          <Avatar>
+          <Avatar className="w-12 h-12">
             <img src={avatarSrc} alt="Avatar" className="rounded-full" />
           </Avatar>
           <CardTitle>{title}</CardTitle>
-          <img src="/save_icon.svg" alt="Salvar" className="pl-4 h-6" />
+          <img src="/save.svg" alt="Salvar" className="pl-4 h-6" />
         </div>
         <CardDescription>Por {author}</CardDescription>
       </CardHeader>
@@ -67,8 +68,14 @@ function NewsCard({ imageSrc, headline, summary }: NewsProps) {
   );
 }
 
-// Componente para Pesquisador
+// Componente para Pesquisador com funcionalidade "Seguindo"
 function ResearcherCard({ avatarSrc, name, field }: ResearcherProps) {
+  const [isFollowing, setIsFollowing] = useState(false);
+
+  const handleFollow = () => {
+    setIsFollowing(!isFollowing);
+  };
+
   return (
     <Card className="shadow-md flex flex-col items-center p-6 px-24">
       <Avatar className="w-24 h-24 mb-4">
@@ -76,13 +83,28 @@ function ResearcherCard({ avatarSrc, name, field }: ResearcherProps) {
       </Avatar>
       <CardTitle className="text-lg font-semibold">{name}</CardTitle>
       <p className="text-sm text-gray-600 mb-4">{field}</p>
-      <button className="w-full bg-blue-500 text-white py-2 rounded-md">
-        Seguir
+      <button
+        onClick={handleFollow}
+        className={`group w-full flex items-center justify-center gap-2 font-bold border border-[#001D6C] py-2 rounded-md transition-colors ${
+          isFollowing
+            ? "bg-[#001D6C] text-white"
+            : "bg-white text-[#001D6C] hover:bg-[#001D6C] hover:text-white"
+        }`}
+      >
+        {!isFollowing && (
+          <img
+            src="/add_icon.svg"
+            alt="Adicionar"
+            className="w-4 h-4 group-hover:brightness-0 group-hover:invert"
+          />
+        )}
+        {isFollowing ? "Seguindo" : "Seguir"}
       </button>
     </Card>
   );
 }
 
+// Página principal
 export function Home() {
   const articles: ArticleProps[] = [
     {
@@ -90,7 +112,7 @@ export function Home() {
       title: "Computação quântica: uma abordagem de ensino baseada em projetos",
       author: "Carlos Almeida Júnior",
       description:
-        "Este artigo explora como a computação quântica pode ser ensinada por meio de projetos práticos, destacando abordagens inovadoras e benefícios para a formação de novos profissionais nesta área emergente da ciência. Ao focar em aplicações reais e no desenvolvimento de habilidades críticas, a abordagem baseada em projetos oferece uma experiência de aprendizado imersiva, ideal para preparar alunos para os desafios do futuro. Exemplos de projetos incluem a simulação de algoritmos quânticos e o desenvolvimento de soluções para problemas complexos usando princípios quânticos.",
+        "Este artigo explora como a computação quântica pode ser ensinada por meio de projetos práticos...",
     },
     {
       avatarSrc: "/people/2.png",
@@ -98,14 +120,14 @@ export function Home() {
         "Desigualdades de gênero no Sistema Único de Saúde e impactos no bem-estar social da mulher",
       author: "Aline Gonçales de Souza",
       description:
-        "O artigo investiga como as desigualdades de gênero afetam o acesso e a qualidade do atendimento no Sistema Único de Saúde (SUS), destacando o impacto disso no bem-estar social das mulheres no Brasil. Ele aborda questões como o preconceito de gênero no atendimento médico, a falta de políticas públicas específicas para as necessidades femininas e os desafios enfrentados por mulheres em situação de vulnerabilidade social. Além disso, propõe medidas para promover a equidade e melhorar a qualidade dos serviços oferecidos.",
+        "O artigo investiga como as desigualdades de gênero afetam o acesso e a qualidade do atendimento no SUS...",
     },
     {
       avatarSrc: "/people/3.png",
       title: "A influência da inteligência artificial na medicina personalizada",
       author: "João Paulo Rocha",
       description:
-        "Este artigo analisa o impacto da inteligência artificial (IA) no desenvolvimento da medicina personalizada, discutindo como as tecnologias de IA estão transformando os tratamentos médicos e a personalização do cuidado para pacientes. Exemplos incluem o uso de aprendizado de máquina para prever diagnósticos, adaptar terapias às necessidades individuais e criar medicamentos personalizados. O texto também aborda os desafios éticos e de privacidade associados ao uso de dados sensíveis em saúde.",
+        "Este artigo analisa o impacto da inteligência artificial no desenvolvimento da medicina personalizada...",
     },
   ];
 
