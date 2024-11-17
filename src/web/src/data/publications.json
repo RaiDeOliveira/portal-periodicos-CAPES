@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Software Testing With Large Language Models: Survey, Landscape, and Vision",
+    "year": "2024",
+    "source": "IEEE Computer Society",
+    "volume": "50",
+    "issue": "4",
+    "language": "Inglês",
+    "doi": "10.1109/tse.2024.3368208",
+    "issn": "2326-3881",
+    "authors": "Junjie Wang, Yuchao Huang, Chunyang Chen, Zhe Liu, Song Wang, Junjie Wang",
+    "topics": "Software Reliability Assessment and Prediction",
+    "summary": "Pre-trained large language models (LLMs) have recently emerged as a breakthrough technology in natural language processing and artificial intelligence, with the ability to handle large-scale datasets and exhibit remarkable performance across a wide range of tasks. Meanwhile, software testing is a crucial undertaking that serves as a cornerstone for ensuring the quality and reliability of software products. As the scope and complexity of software systems continue to grow, the need for more effective software testing techniques becomes increasingly urgent, making it an area ripe for innovative approaches such as the use of LLMs. This paper provides a comprehensive review of the utilization of LLMs in software testing. It analyzes 102 relevant studies that have used LLMs for software testing, from both the software testing and LLMs perspectives. The paper presents a detailed discussion of the software testing tasks for which LLMs are commonly used, among which test case preparation and program repair are the most representative. It also analyzes the commonly used LLMs, the types of prompt engineering that are employed, as well as the accompanied techniques with these LLMs. It also summarizes the key challenges and potential opportunities in this direction. This work can serve as a roadmap for future research in this area, highlighting potential avenues for exploration, and identifying gaps in our current understanding of the use of LLMs in software testing.",
+    "link": "https://ieeexplore.ieee.org/document/10440574",
+    "citations": 14,
+    "readers": 167,
+    "qualis": "A1"
+  },
+  {
+    "id": 2,
+    "title": "Empirical Study of Agile Software Development Methodologies: A Comparative Analysis",
+    "year": "2024",
+    "source": "Asian Journal of Research in Computer Science",
+    "volume": "17",
+    "issue": "5",
+    "language": "Inglês",
+    "doi": "10.9734/ajrcos/2024/v17i5436 ",
+    "issn": "2581-8260 ",
+    "authors": "Samuel Gbli Tetteh ",
+    "topics": "Agile Software Development in Software Engineering",
+    "summary": "The comparative analysis of software development models, also called the Software Development Life Cycle (SDLC), is an everyday discourse among software engineers, reflecting the dynamic nature of the field. Within this realm, various software development methodologies, such as prototyping, spiral development, and Rapid Action Development, have been established and recognised for their unique approaches to software creation. In recent years, Agile methodologies have emerged as prominent contenders in software development, offering flexibility, adaptability, and efficiency in delivering high-quality software within designated timeframes. Among the array of Agile methodologies, including Dynamic System Development Method (DSDM), Scrum, Feature-Driven Development (FDD), Extreme Programming (XP), Kanban, Adaptive Software Development (ASD), Mendix, Lean, and Crystal, several have garnered significant attention in the software development community. Specifically, ASD, DSDM, XP, FDD, Kanban, and Scrum have emerged as prominent choices among Agile methods utilised by software developers. This study conducts a comprehensive examination and comparison of these six Agile software models, aiming to elucidate their functionalities, strengths, and weaknesses. The findings of this comparative analysis seek to provide valuable insights for software industries, enabling informed decision-making when selecting software development models for upcoming projects. By understanding each Agile methodology's nuanced differences and capabilities, software developers and industry stakeholders can align their project requirements with the most suitable software development approach, ultimately optimising project outcomes and software quality. ",
+    "link": "https://journalajrcos.com/index.php/AJRCOS/article/view/436",
+    "citations": 7,
+    "readers": 112,
+    "qualis": "A1"
+  }
+]

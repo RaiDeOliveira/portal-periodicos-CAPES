@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Melander, 2005",
+    "year": 2005,
+    "position": { "x": 0, "y": 0 }
+  },
+  {
+    "id": 2,
+    "title": "Caprioli, 2003",
+    "year": 2003,
+    "position": { "x": 200, "y": 50 }
+  },
+  {
+    "id": 3,
+    "title": "Hudson, 2009",
+    "year": 2009,
+    "position": { "x": -200, "y": 50 }
+  },
+  {
+    "id": 4,
+    "title": "Gizelis, 2011",
+    "year": 2011,
+    "position": { "x": 100, "y": -200 }
+  },
+  {
+    "id": 5,
+    "title": "Regan, 2003",
+    "year": 2003,
+    "position": { "x": -100, "y": -200 }
+  }
+]
