@@ -8,10 +8,8 @@ import { NavBar } from "./components/navbar.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <div className="grid grid-rows-[auto_1fr] h-screen">
-      <NavBar />
-      <App />
-      <Toaster />
-    </div>
+    <NavBar />
+    <App />
+    <Toaster />
   </StrictMode>
 );

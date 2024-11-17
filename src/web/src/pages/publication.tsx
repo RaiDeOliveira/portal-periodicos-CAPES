@@ -5,7 +5,7 @@ import { PublicationDetails } from "@/components/publicationDetails";
 import { PublicationLinks } from "@/components/publicationLinks";
 import { Metrics } from "@/components/metrics";
 import { PublicationChat } from "@/components/publicationChat";
-import { PublicationGraph } from "@/components/publicationGraph"; 
+import { PublicationGraph } from "@/components/publicationGraph";
 
 export function Publication() {
   const { id } = useParams();
@@ -57,7 +57,9 @@ export function Publication() {
         {/* Grafo dos artigos relacionados */}
         <div className="mt-12">
           <h2 className="text-2xl font-semibold mb-4">Artigos Relacionados</h2>
-          <PublicationGraph />
+          <div className="border-2 border-blue2 p-2">
+            <PublicationGraph />
+          </div>
         </div>
       </div>
     </div>
