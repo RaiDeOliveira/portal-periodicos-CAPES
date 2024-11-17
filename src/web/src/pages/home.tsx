@@ -4,18 +4,21 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
 
+import publication from "@/data/publications.json";
+
 // Tipos para os componentes
 interface ArticleProps {
-  avatarSrc: string;
+  id: number;
   title: string;
   author: string;
   description: string;
+  link: string;
+  avatarSrc: string;
 }
 
 interface NewsProps {
@@ -25,27 +28,39 @@ interface NewsProps {
 }
 
 interface ResearcherProps {
+  id: number;
   avatarSrc: string;
   name: string;
   field: string;
 }
 
 // Componente para Artigo
-function ArticleCard({ avatarSrc, title, author, description }: ArticleProps) {
+function ArticleCard({
+  id,
+  title,
+  author,
+  description,
+  avatarSrc,
+}: ArticleProps) {
+  const shortDescription =
+    description.length > 200 ? `${description.slice(0, 200)}...` : description;
+
   return (
-    <Card className="w-full max-w-full">
-      <CardHeader>
-        <div className="flex items-center space-x-4">
-          <Avatar className="w-12 h-12">
-            <img src={avatarSrc} alt="Avatar" className="rounded-full" />
-          </Avatar>
-          <CardTitle>{title}</CardTitle>
-          <img src="/save.svg" alt="Salvar" className="pl-4 h-6" />
-        </div>
-        <CardDescription>Por {author}</CardDescription>
-      </CardHeader>
-      <CardContent>{description}</CardContent>
-    </Card>
+    <a href={`/publication/${id}`}>
+      <Card className="w-full max-w-full rounded-none">
+        <CardHeader>
+          <div className="flex items-center space-x-4 justify-between">
+            <Avatar className="w-12 h-12">
+              <img src={avatarSrc} alt="Avatar" className="rounded-full" />
+            </Avatar>
+            <CardTitle className="flex self-start">{title}</CardTitle>
+            <img src="/save.svg" alt="Salvar" className="pl-4 h-6" />
+          </div>
+          <CardDescription>Por {author}</CardDescription>
+        </CardHeader>
+        <CardContent className="rounded-none">{shortDescription}</CardContent>
+      </Card>
+    </a>
   );
 }
 
@@ -57,7 +72,7 @@ function NewsCard({ imageSrc, headline, summary }: NewsProps) {
         <img
           src={imageSrc}
           alt={headline}
-          className="w-full h-36 object-cover rounded-lg"
+          className="w-full h-36 object-cover rounded-none"
         />
         <div className="text-left">
           <h2 className="font-semibold w-full">{headline}</h2>
@@ -77,7 +92,7 @@ function ResearcherCard({ avatarSrc, name, field }: ResearcherProps) {
   };
 
   return (
-    <Card className="shadow-md flex flex-col items-center p-6 px-24">
+    <Card className="shadow-md flex flex-col items-center p-6 px-24 rounded-none">
       <Avatar className="w-24 h-24 mb-4">
         <img src={avatarSrc} alt="Avatar" className="rounded-full" />
       </Avatar>
@@ -85,7 +100,7 @@ function ResearcherCard({ avatarSrc, name, field }: ResearcherProps) {
       <p className="text-sm text-gray-600 mb-4">{field}</p>
       <button
         onClick={handleFollow}
-        className={`group w-full flex items-center justify-center gap-2 font-bold border border-[#001D6C] py-2 rounded-md transition-colors ${
+        className={`group w-full flex items-center justify-center gap-2 font-bold border border-[#001D6C] py-2 rounded-none transition-colors ${
           isFollowing
             ? "bg-[#001D6C] text-white"
             : "bg-white text-[#001D6C] hover:bg-[#001D6C] hover:text-white"
@@ -106,30 +121,14 @@ function ResearcherCard({ avatarSrc, name, field }: ResearcherProps) {
 
 // Página principal
 export function Home() {
-  const articles: ArticleProps[] = [
-    {
-      avatarSrc: "/people/1.png",
-      title: "Computação quântica: uma abordagem de ensino baseada em projetos",
-      author: "Carlos Almeida Júnior",
-      description:
-        "Este artigo explora como a computação quântica pode ser ensinada por meio de projetos práticos...",
-    },
-    {
-      avatarSrc: "/people/2.png",
-      title:
-        "Desigualdades de gênero no Sistema Único de Saúde e impactos no bem-estar social da mulher",
-      author: "Aline Gonçales de Souza",
-      description:
-        "O artigo investiga como as desigualdades de gênero afetam o acesso e a qualidade do atendimento no SUS...",
-    },
-    {
-      avatarSrc: "/people/3.png",
-      title: "A influência da inteligência artificial na medicina personalizada",
-      author: "João Paulo Rocha",
-      description:
-        "Este artigo analisa o impacto da inteligência artificial no desenvolvimento da medicina personalizada...",
-    },
-  ];
+  const articles: ArticleProps[] = publication.map((publication, index) => ({
+    id: publication.id,
+    title: publication.title,
+    author: publication.authors,
+    description: publication.summary,
+    link: publication.link,
+    avatarSrc: `/people/${index + 1}.png`, // Alterna avatares de 1 a 3
+  }));
 
   const news: NewsProps[] = [
     {
@@ -163,16 +162,19 @@ export function Home() {
       avatarSrc: "/people/p1.png",
       name: "Maria Silva",
       field: "Inteligência Artificial",
+      id: 1,
     },
     {
       avatarSrc: "/people/p2.png",
       name: "José Costa",
       field: "Engenharia biomédica",
+      id: 2,
     },
     {
       avatarSrc: "/people/p3.png",
       name: "Milena Pinheiros",
       field: "Biotecnologia",
+      id: 3,
     },
   ];
 
@@ -182,7 +184,7 @@ export function Home() {
         <div className="py-4 w-1/2 mx-auto font-bold">
           <Input
             placeholder="Olá! O que você quer buscar?"
-            className="shadow-md rounded-md focus:outline-none focus:ring-2 focus:ring-[#001D6C]"
+            className="shadow-md rounded-none focus:outline-none focus:ring-2 focus:ring-[#001D6C]"
           />
         </div>
 
@@ -197,7 +199,7 @@ export function Home() {
           </div>
 
           <div className="pt-12 w-3/10">
-            <Card className="w-full h-[680px] overflow-hidden shadow-md">
+            <Card className="w-full h-[680px] overflow-hidden shadow-md rounded-none">
               <CardHeader>
                 <CardTitle className="text-center">Notícias</CardTitle>
               </CardHeader>
@@ -213,7 +215,9 @@ export function Home() {
         </div>
 
         <div className="py-12 px-16">
-          <h1 className="font-bold text-2xl pb-4">Pesquisadores Recomendados</h1>
+          <h1 className="font-bold text-2xl pb-4">
+            Pesquisadores Recomendados
+          </h1>
           <div className="grid grid-cols-3 gap-8 text-center">
             {researchers.map((researcher, index) => (
               <ResearcherCard key={index} {...researcher} />

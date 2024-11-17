@@ -1,5 +1,5 @@
 import { Avatar } from "@/components/ui/avatar";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 // Dados de exemplo dos pesquisadores que estão sendo seguidos
 const followingResearchers = [
