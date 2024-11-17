@@ -1,3 +1,5 @@
+import { buttonVariants } from "@/components/ui/button";
+
 interface PublicationDetailsProps {
   issn: string;
   authors: string;
@@ -19,7 +21,9 @@ export function PublicationDetails({
       </div>
       <div className="mb-4">
         <h2 className="font-semibold text-lg text-dark2">Autores</h2>
-        <p className="text-gray-700">{authors}</p>
+        <a href="/extern_profile" className="hover:underline">
+          {authors}
+        </a>
       </div>
       <div className="mb-4">
         <h2 className="font-semibold text-lg text-dark2">Tópico(s)</h2>

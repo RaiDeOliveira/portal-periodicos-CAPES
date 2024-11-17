@@ -10,6 +10,7 @@ import {
 import { Avatar } from "@/components/ui/avatar";
 
 import publication from "@/data/publications.json";
+import { DialogSave } from "@/components/dialogSave";
 
 // Tipos para os componentes
 interface ArticleProps {
@@ -50,11 +51,14 @@ function ArticleCard({
       <Card className="w-full max-w-full rounded-none">
         <CardHeader>
           <div className="flex items-center space-x-4 justify-between">
-            <Avatar className="w-12 h-12">
-              <img src={avatarSrc} alt="Avatar" className="rounded-full" />
-            </Avatar>
+            <a href="/extern_profile">
+              <Avatar className="w-12 h-12">
+                <img src={avatarSrc} alt="Avatar" className="rounded-full" />
+              </Avatar>
+            </a>
+
             <CardTitle className="flex self-start">{title}</CardTitle>
-            <img src="/save.svg" alt="Salvar" className="pl-4 h-6" />
+            <DialogSave />
           </div>
           <CardDescription>Por {author}</CardDescription>
         </CardHeader>
