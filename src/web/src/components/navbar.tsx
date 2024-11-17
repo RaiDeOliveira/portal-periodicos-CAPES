@@ -163,7 +163,9 @@ export function NavBar() {
           </NavigationMenu>
 
           {/* Botão base */}
-          <BaseButton />
+          <a href="/profile">
+            <BaseButton />
+          </a>
         </div>
       </div>
 

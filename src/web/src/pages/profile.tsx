@@ -85,7 +85,7 @@ export function Profile() {
 
       <div className="mt-12">
         <h3 className="font-rawline font-semibold text-xl text-[#001D6C] mb-6">
-          Pesquisadores Seguidos
+          Seguindo
         </h3>
         <div className="flex space-x-16 overflow-x-auto">
           {followingResearchers.map((researcher, index) => (
