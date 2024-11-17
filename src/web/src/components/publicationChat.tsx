@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 interface PublicationChatProps {
-  publication: string;
+  publication: number;
 }
 
 export function PublicationChat({ publication }: PublicationChatProps) {
@@ -41,7 +41,7 @@ export function PublicationChat({ publication }: PublicationChatProps) {
   }
 
   return (
-    <div className="flex flex-col h-[400px] p-3 border border-blue2 rounded-md shadow-lg bg-light2">
+    <div className="flex flex-col h-[400px] p-2 border-2 border-blue2">
       {/* Mensagens */}
       <div className="flex-1 overflow-y-auto mb-4 space-y-3 pr-2 scrollbar-none">
         {messages.map((message, index) => (

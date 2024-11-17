@@ -45,7 +45,7 @@ export function DialogSave() {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button variant="outline" size="icon" className="border-0">
-          <img src="save.svg" alt="Ícone de salvar" />
+          <img src="/save.svg" alt="Ícone de salvar" />
         </Button>
       </DialogTrigger>
       <DialogContent className="">

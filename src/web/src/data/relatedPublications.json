@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "title": "Log Analysis and System Performance Diagnosis",
+    "year": 2023,
+    "position": { "x": -800, "y": -600 }
+  },
+  {
+    "id": 2,
+    "title": "Ethical Implications of Artificial Intelligence",
+    "year": 2023,
+    "position": { "x": 700, "y": 500 }
+  },
+  {
+    "id": 3,
+    "title": "Agile Software Development in Software Engineering",
+    "year": 2024,
+    "position": { "x": -900, "y": 400 }
+  },
+  {
+    "id": 4,
+    "title": "Log Analysis and System Performance Diagnosis",
+    "year": 2023,
+    "position": { "x": 500, "y": -700 }
+  },
+  {
+    "id": 5,
+    "title": "Empirical Studies in Software Engineering",
+    "year": 2023,
+    "position": { "x": -400, "y": -900 }
+  },
+  {
+    "id": 6,
+    "title": "Deep Learning Techniques for Image Recognition",
+    "year": 2022,
+    "position": { "x": 1000, "y": 1000 }
+  },
+  {
+    "id": 7,
+    "title": "Blockchain Applications in Finance",
+    "year": 2021,
+    "position": { "x": -1000, "y": -300 }
+  },
+  {
+    "id": 8,
+    "title": "Natural Language Processing Trends and Applications",
+    "year": 2024,
+    "position": { "x": 200, "y": 900 }
+  },
+  {
+    "id": 9,
+    "title": "Cybersecurity Challenges in Modern Systems",
+    "year": 2023,
+    "position": { "x": -1100, "y": 300 }
+  },
+  {
+    "id": 10,
+    "title": "Internet of Things: Innovations and Limitations",
+    "year": 2022,
+    "position": { "x": 1200, "y": -800 }
+  },
+  {
+    "id": 11,
+    "title": "AI Governance and Policy Frameworks",
+    "year": 2024,
+    "position": { "x": -1300, "y": -100 }
+  },
+  {
+    "id": 12,
+    "title": "Augmented Reality in Education and Training",
+    "year": 2023,
+    "position": { "x": 1300, "y": 600 }
+  },
+  {
+    "id": 13,
+    "title": "Sustainable Computing and Green AI",
+    "year": 2023,
+    "position": { "x": -600, "y": 1000 }
+  },
+  {
+    "id": 14,
+    "title": "The Future of Quantum Computing",
+    "year": 2024,
+    "position": { "x": 1400, "y": -500 }
+  },
+  {
+    "id": 15,
+    "title": "Human-Centered AI Design Principles",
+    "year": 2023,
+    "position": { "x": -1500, "y": 700 }
+  }
+]
